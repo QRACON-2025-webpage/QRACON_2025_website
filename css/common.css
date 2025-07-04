@@ -1,0 +1,204 @@
+        body {
+            padding-top: 60px; /* 給body一些padding，避免內容被nav遮住 */
+        }
+
+        .nav-item {
+            padding-left: 3rem;
+        }
+        .title-image-main{
+            background-image: url('../images/title-bg.png');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            padding-top: 400px;
+            padding-bottom: 400px;
+        }
+        .title-image{
+            background-image: url('../images/title-bg.png');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            padding-top: 100px;
+            padding-bottom: 100px;
+        }
+        .title-image-noface{
+            background-image: url('../images/title-bg-noface.png');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            padding-top: 100px;
+            padding-bottom: 100px;
+        }
+        .title-main {
+            position: absolute;
+            right: 0;
+            top: 300px;
+            margin-right: 100px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            width: fit-content;
+
+            /* 背景使用漸層 + 半透明白色 */
+            background: linear-gradient(
+                rgba(255, 255, 255, 0.2),
+                rgba(255, 255, 255, 0.2)
+            );
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+
+            /* 柔和的邊框和陰影 */
+            border-radius: 12px;
+            box-shadow: 0 0 30px 15px rgba(255, 255, 255, 0.1);
+
+            /* 讓邊界感更淡：使用 padding 加緩衝 */
+            padding: 20px 30px;
+        }
+        .title-main-phone {
+            position: absolute;
+            right: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-right: 100px;
+
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            width: fit-content;
+
+            /* 背景使用漸層 + 半透明白色 */
+            background: linear-gradient(
+                rgba(255, 255, 255, 0.2),
+                rgba(255, 255, 255, 0.2)
+            );
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+
+            /* 柔和的邊框和陰影 */
+            border-radius: 12px;
+            box-shadow: 0 0 30px 15px rgba(255, 255, 255, 0.1);
+
+            /* 讓邊界感更淡：使用 padding 加緩衝 */
+            padding: 20px 30px;
+        }
+        .title{
+            display: flex;
+            flex-direction: column; /* 垂直排列 */
+            align-items: center;    /* 水平置中 */
+            justify-content: center; /* 垂直置中（可選） */
+            /*background-color:#3C3C3C;
+            opacity: 0.5;*/
+            margin:auto;
+            /*margin-top:100px;
+            margin-bottom:100px;*/
+            width: fit-content;
+            /*margin-right:0px auto;*/
+            background: linear-gradient(
+                rgba(255, 255, 255, 0.2),
+                rgba(255, 255, 255, 0.2)
+            );
+            backdrop-filter: blur(5px);
+            border-radius: 12px;
+            box-shadow: 0 0 30px 15px rgba(255, 255, 255, 0.1);
+
+            /* 讓邊界感更淡：使用 padding 加緩衝 */
+            padding: 20px 30px;
+        }
+        .content{
+            max-width: 720px;
+            margin: auto;
+            padding: 10px;
+            margin-top: 20px;
+        }
+        article {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            letter-spacing: 3px;
+            line-height: 1.8;
+        }
+        h4 {
+            letter-spacing: 3px;
+            line-height: 1.8;
+        }
+        p {
+            letter-spacing: 3px;
+            line-height: 1.8;
+        }
+        button {
+            background-color: #2b4b66;  /* 藍色 */
+            color: white;               /* 白色字 */
+            border: solid 2px;               /* 無邊框 */
+            padding: 12px 24px;         /* 內距 */
+            font-size: 16px;            /* 字體大小 */
+            border-radius: 12px;         /* 圓角 */
+            cursor: pointer;            /* 滑鼠游標 */
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 陰影 */
+        }
+         @media (max-width: 768px) {
+            .title-main {
+                position: absolute;
+                right: 0;
+                top: 300px;
+                margin-right: 100px;
+
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+
+                width: fit-content;
+
+                /* 背景使用漸層 + 半透明白色 */
+                background: linear-gradient(
+                    rgba(255, 255, 255, 0.2),
+                    rgba(255, 255, 255, 0.2)
+                );
+                backdrop-filter: blur(5px);
+                -webkit-backdrop-filter: blur(5px);
+
+                /* 柔和的邊框和陰影 */
+                border-radius: 12px;
+                box-shadow: 0 0 30px 15px rgba(255, 255, 255, 0.1);
+
+                /* 讓邊界感更淡：使用 padding 加緩衝 */
+                padding: 20px 30px;
+            }
+            .title-main-phone {
+                position: absolute;
+                right: 0;
+                top: 300px;
+                left: 50%;
+                transform: translateX(-50%);
+                margin-right: 100px;
+
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+
+                width: fit-content;
+
+                /* 背景使用漸層 + 半透明白色 */
+                background: linear-gradient(
+                    rgba(255, 255, 255, 0.2),
+                    rgba(255, 255, 255, 0.2)
+                );
+                backdrop-filter: blur(5px);
+                -webkit-backdrop-filter: blur(5px);
+
+                /* 柔和的邊框和陰影 */
+                border-radius: 12px;
+                box-shadow: 0 0 30px 15px rgba(255, 255, 255, 0.1);
+
+                /* 讓邊界感更淡：使用 padding 加緩衝 */
+                padding: 20px 30px;
+            }
+        }

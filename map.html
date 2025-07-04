@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh" style="height:100%">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>QRACON 2025</title>
+	<script src="js/jquery.js"></script>
+	<script>if (typeof module === 'object') {window.jQuery = window.$ = module.exports;};</script>
+	<link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/common.css" rel="stylesheet" />
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/components.js"></script>
+    <style>
+        
+        .transport{
+            display: grid;
+            grid-template-rows: 6rem 2rem 8rem 2rem 6rem;
+            grid-template-columns: 5fr 1fr 5fr 1fr 5fr ;
+            gap: 0.5rem;
+            max-width: 1000px;
+            margin-top: 20px;
+        }
+        .transport_cell{
+            border: 1px solid rgb(160, 160, 160);
+            border-radius: 10px;
+        }
+        .cell{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-content: center;
+            text-align: center;
+        }
+        .highway{
+            display: flex;
+            flex-wrap: nowrap;
+            align-content: center;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <nav-custom></nav-custom>
+    <main>
+        <div class="title-image-noface">
+            
+            <div class="title">
+                <h1 align="center">交通方式</h1>
+            </div>
+        </div>
+        <div class="content">
+            <article>
+                <h2>會場位置</h2>
+                <h5>中央研究院 人文社會科學館</h5>
+                <h5>台北市南港區研究院路二段128號</h5>
+                <iframe data-v-08b0ef72="" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5112.035328775318!2d121.6105374308771!3d25.04239243554148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442ab46b3aaaaab%3A0x6ad0b8243ddc70ef!2z5Lit5aSu56CU56m26Zmi5Lq65paH56S-5pyD56eR5a246aSo!5e0!3m2!1szh-TW!2stw!4v1719755960238!5m2!1szh-TW!2stw" height="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="border: 0px;width:100%" ></iframe>
+            </article>
+            <hr>
+            <article>
+                <h2>交通方式</h2>
+                <h4>大眾運輸:</h4>
+                <div class="transport">
+                    <div class="transport_cell cell" style="grid-area: 1/1;">
+                        <h6>搭乘高鐵至</h6><h6>南港車站</h6>
+                    </div>
+                    <div style="grid-area: 1/2;"></div>
+                    <div class="transport_cell cell" style="grid-area: 1/3;">
+                        <h6>搭乘台鐵至</h6><h6>南港車站</h6>
+                    </div>
+                    <div style="grid-area: 1/4;"></div>
+                    <div class="transport_cell cell" style="grid-area: 1/5;">
+                        <h6>搭乘台北捷運至</h6><h6>南港展覽館車站</h6>
+                    </div>
+
+                    <div class="cell" style="grid-area: 2/1;">
+                        <h6>▼</h6>
+                    </div>
+                    <div style="grid-area: 2/2;"></div>
+                    <div class="cell" style="grid-area: 2/3;">
+                        <h6>▼</h6>
+                    </div>
+                    <div style="grid-area: 2/4;"></div>
+                    <div class="cell" style="grid-area: 2/5;">
+                        <h6>▼</h6>
+                    </div>
+
+                    <div class="transport_cell cell" style="grid-area: 3/1;">
+                        <h6>轉乘公車至</h6><h6>中研院站</h6><h6>(212直、270、藍25)</h6>
+                    </div>
+                    <div class="transport_cell cell" style="grid-area: 3/3;">
+                        <h6>轉乘公車至</h6><h6>中研院站</h6><h6>(212直、270、藍25)</h6>
+                    </div>
+                    <div class="transport_cell cell" style="grid-area: 3/5;">
+                        <h6>轉乘公車至</h6><h6>中研院站</h6><h6>(205、212、276、306、306區、64)</h6>
+                    </div>
+
+                    <div class="cell" style="grid-area: 4/1;">
+                        <h6>▼</h6>
+                    </div>
+                    <div style="grid-area: 4/2;"></div>
+                    <div class="cell" style="grid-area: 4/3;">
+                        <h6>▼</h6>
+                    </div>
+                    <div style="grid-area: 4/4;"></div>
+                    <div class="cell" style="grid-area: 4/5;">
+                        <h6>▼</h6>
+                    </div>
+
+                    <div class="transport_cell cell" style="grid-area: 5/1;">
+                        <h6>步行至</h6><h6>中研院人社館</h6>
+                    </div>
+                    <div class="transport_cell cell" style="grid-area: 5/3;">
+                        <h6>步行至</h6><h6>中研院人社館</h6>
+                    </div>
+                    <div class="transport_cell cell" style="grid-area: 5/5;">
+                        <h6>步行至</h6><h6>中研院人社館</h6>
+                    </div>
+                </div>
+            </article>
+            <article>
+                <h4>自行開車:</h4>
+                <h6 style="color: red;">建議優先搭乘大眾運輸工具</h6>
+                <h6>為響應節能減碳與交通順暢，建議來賓盡量搭乘大眾運輸工具前來。若需自行開車，請參考以下路線建議:</h6>
+                <div style="margin-top: 20px;">
+                    <div class="highway">
+                        <img src="images/TWHW1.svg" style="width: 30px;">
+                        <h6>國一北上</h6>
+                    </div>
+                    <p>下東湖交流道後右轉經貿一路，沿經貿一路-經貿二路-研究院路一段/二段，中研院即在您的右手邊。</p>
+
+                    <div class="highway">
+                        <img src="images/TWHW1.svg" style="width: 30px;">
+                        <h6>國一南下</h6>
+                    </div>
+                    <p>下汐止系統交流道上國道三號，接著下南港交流道(14K)後右轉橫科路，行駛約一公里後左轉研究院路一段，約一公里後中研院即在您的右手邊。</p>
+
+                    <div class="highway">
+                        <img src="images/TWHW3.svg" style="width: 30px;">
+                        <h6>國三北上</h6>
+                    </div>
+                    <p>下南深路交流道後左轉南深路，走到底左轉舊莊街一段，約500公尺後中研院即在您的左手邊。</p>
+
+                    <div class="highway">
+                        <img src="images/TWHW3.svg" style="width: 30px;">
+                        <h6>國三南下</h6>
+                    </div>
+                    <p>下南港交流道(14K)後右轉橫科路，行駛約一公里後左轉研究院路一段，約一公里後中研院即在您的右手邊。</p>
+                </div>
+                <div style="margin-top: 20px;">
+                    <h4>停車須知:</h4>
+                    <p>中研院內設有停車格，進入院區停車請先向警衛換證方可駛入。</p>
+                    <a href="https://dga.sinica.edu.tw/posts/78705"><p>中央研究院院區車輛通行停放管理施行要點</p></a>
+                    <p>機車無法進入院區，免費機車停車場位於大門右側、對面，以及胡適公園旁。</p>
+                </div>
+            </article>
+        </div>
+
+    </main>
+    <footer-custom></footer-custom>
+</body>
+</html>

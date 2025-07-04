@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh" style="height:100%">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>QRACON 2025</title>
+	<script src="js/jquery.js"></script>
+	<script>if (typeof module === 'object') {window.jQuery = window.$ = module.exports;};</script>
+	<link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/common.css" rel="stylesheet" />
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/components.js"></script>
+    <style>
+        .unitList{
+            display: grid;
+            grid-template-rows: 10rem 10rem 10rem 10rem;
+            grid-template-columns: 2fr 2fr;
+            gap: 0.5rem;
+            max-width: 1000px;
+            margin-top: 20px;
+        }
+        .unit{
+            display: flex;
+            flex-direction: column; /* 垂直排列 */
+            align-items: center;    /* 水平置中 */
+            justify-content: center; /* 垂直置中（可選） */
+            margin-bottom: 20px;
+        }
+        .memberList{
+            display: grid;
+            /*grid-template-rows: 8rem 8rem 8rem 8rem;*/
+            grid-template-columns: 2fr 2fr 2fr 2fr;
+            gap: 0.5rem;
+            max-width: 1000px;
+            margin-top: 20px;
+        }
+        .member{
+            display: flex;
+            flex-direction: column; /* 垂直排列 */
+            align-items: center;    /* 水平置中 */
+            justify-content: center; /* 垂直置中（可選） */
+        }
+        .memberIMG{
+            border-radius: 20px;
+        }
+        @media (max-width: 768px) {
+            .unitList {
+                grid-template-columns: 1fr;
+                grid-template-rows: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav-custom></nav-custom>
+    <main>
+        <div class="title-image-noface">
+            <div class="title">
+                <h1 align="center">關於QRACON</h1>
+            </div>
+        </div>
+        <div class="content">
+            <article>
+                <h2>主辦單位</h2>
+                <h3>ENTANGLE TECH</h3>
+                <p> EntangleTech前瞻量子教育平台是一個由學生主導的組織，旨在促進學生間對量子計算的交流和學習。EntangleTech的前身SQCS（學生量子電腦交流會，Student Quantum Computing Society）成立於2020年，由一群對量子計算和量子科技領域感興趣的學生創立。其創立初衷是為了彌平大學與高中新量子教育的不平等，並於2023年重組並更名為EntangleTech前瞻量子教育平台。</p>
+                <p>目前，EntangleTech的主要工作是為學生提供一個學習和交流的平台，透過組織線上和線下的講座、研討會、工作坊和競賽等活動，幫助學生們深入了解量子計算的基礎知識和前沿技術。此外，EntangleTech還為學生提供了一個聯繫和合作的機會，促進學生之間的相互交流和合作，培養學生的團隊協作和解決問題的能力。</p>
+            </article>
+            <hr/>
+            <article>
+                <h2>協辦單位</h2>
+                <div class="unitList">
+                    <div class="unit">
+                        <img src="images/nstc-logo.jpg" style="width:300px">
+                        <p>國家科學及技術委員會</p>
+                    </div>
+                    <div class="unit">
+                        <img src="images/RCAS.png" style="width:100px">
+                        <p>中央研究院應用科學研究中心</p>
+                    </div>
+                    <div class="unit">
+                        <img src="images/logo_rcci.png" style="width:300px">
+                        <p>中央研究院關鍵議題研究中心</p>
+                    </div>
+                    <div class="unit">
+                        <img src="images/NTU-IBM.jpg" style="width:300px">
+                        <p> 國立臺灣大學-IBM量子電腦中心</p>
+                    </div>
+                    <div class="unit">
+                        <img src="images/QFort.png" style="width:300px">
+                        <p>國立成功大學前沿量子科技研究中心</p>
+                    </div>
+                    <div class="unit">
+                        <img src="images/CYCU.png" style="width:300px">
+                        <p>中原大學量子資訊中心</p>
+                    </div>
+                    <div class="unit">
+                        <img src="images/IBM.png" style="width:100px">
+                        <p>IBM QISKIT ADVOCATES</p>
+                    </div>
+                    <div class="unit">
+                        <img src="images/TAQCIT.png" style="width:300px">
+                        <p>臺灣量子電腦兼資訊科技協會</p>
+                    </div>
+                </div>
+                
+            </article>
+            <hr/>
+            <article>
+                <h2>年會贊助商與媒體夥伴(持續增加中)</h2>
+                <div class="unitList" style="grid-template-rows: 10rem;">
+                    <div class="unit">
+                        <img src="images/BTQ.png" style="width:200px">
+                        <p>BTQ(加拿大量子安全技術新創公司)</p>
+                    </div>
+                    <div class="unit">
+                        <img src="images/nstc-logo.jpg" style="width:300px">
+                        <p>國家科學及技術委員會</p>
+                    </div>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2>特別感謝</h2>
+                <div>
+                    <div class="unit">
+                        <img src="images/RCAS_logo_long.png" style="width:300px">
+                        <p>中央研究院應用科學研究中心——陳祺老師</p>
+                    </div>
+                </div>
+            </article>
+            <article>
+                <h2>QRACON籌辦小組</h2>
+                <h4>召組</h4>
+                <div class="memberList">
+                    <div class="member" style="grid-area: 1/1;">
+                        <img src="images/members/YuChen.webp" style="width: 100px;" class="memberIMG">
+                        <h6>總召 Yuchen</h6>
+                    </div>
+                    <div class="member" style="grid-area: 1/2;">
+                        <img src="images/members/unknown.png" style="width: 100px;" class="memberIMG">
+                        <h6>副召 qiaoyin</h6>
+                    </div>
+                    <div class="member" style="grid-area: 1/3;">
+                        <img src="images/members/unknown.png" style="width: 100px;" class="memberIMG">
+                        <h6>副召 ming-chin</h6>
+                    </div>
+                    <div class="member" style="grid-area: 1/4;">
+                        <img src="images/members/CCLin.webp" style="width: 100px;" class="memberIMG">
+                        <h6>副召 CCLin</h6>
+                    </div>
+                </div>
+
+                <h4>議程組</h4>
+                <div class="memberList">
+                    <div class="member" style="grid-area: 1/1;">
+                        <img src="images/members/Hi.jpg" style="width: 100px;" class="memberIMG">
+                        <h6>議程組長 Hi</h6>
+                    </div>
+                    <div class="member" style="grid-area: 1/2;">
+                        <img src="images/members/XianYu.webp" style="width: 100px;" class="memberIMG">
+                        <h6>議程組 XianYu</h6>
+                    </div>
+                    <div class="member" style="grid-area: 1/3;">
+                        <img src="images/members/red_tea.webp" style="width: 100px;" class="memberIMG">
+                        <h6>議程組 red_tea_not_black_tea</h6>
+                    </div>
+                    <div class="member" style="grid-area: 1/4;">
+                        <img src="images/members/unknown.png" style="width: 100px;" class="memberIMG">
+                        <h6>議程組 Louispil</h6>
+                    </div>
+                    <div class="member" style="grid-area: 2/1;">
+                        <img src="images/members/marcus.webp" style="width: 100px;" class="memberIMG">
+                        <h6>議程組 marcus zeng</h6>
+                    </div>
+                    <div class="member" style="grid-area: 2/2;">
+                        <img src="images/members/maodou.webp" style="width: 100px;" class="memberIMG">
+                        <h6>議程組 毛豆加起司</h6>
+                    </div>
+                </div>
+
+                <h4>企劃組</h4>
+                <div class="memberList">
+                    <div class="member" style="grid-area: 1/1;">
+                        <img src="images/members/Zanna.webp" style="width: 100px;" class="memberIMG">
+                        <h6>企劃組長 孟昕</h6>
+                    </div>
+                    <div class="member" style="grid-area: 1/2;">
+                        <img src="images/members/Yii.webp" style="width: 100px;" class="memberIMG">
+                        <h6>企劃組 沂</h6>
+                    </div>
+                    <div class="member" style="grid-area: 1/3;">
+                        <img src="images/members/LuoLiMiao.webp" style="width: 100px;" class="memberIMG">
+                        <h6>企劃組 酪梨喵</h6>
+                    </div>
+                    <div class="member" style="grid-area: 1/4;">
+                        <img src="images/members/Anlln.webp" style="width: 100px;" class="memberIMG">
+                        <h6>企劃組 Anlln</h6>
+                    </div>
+                </div>
+
+                <h4>美術組</h4>
+                <div class="memberList">
+                    <div class="member" style="grid-area: 1/1;">
+                        <img src="images/members/Sunda4.webp" style="width: 100px;" class="memberIMG">
+                        <h6>美術組長 sunda4</h6>
+                    </div>
+                    <div class="member" style="grid-area: 1/2;">
+                        <img src="images/members/Peggy.webp" style="width: 100px;" class="memberIMG">
+                        <h6>美術組 peggy</h6>
+                    </div>
+                    <div class="member" style="grid-area: 1/3;">
+                        <img src="images/members/Doris.webp" style="width: 100px;" class="memberIMG">
+                        <h6>美術組 Doris</h6>
+                    </div>
+                    <div class="member" style="grid-area: 1/4;">
+                        <img src="images/members/Rexi.jpg" style="width: 100px;" class="memberIMG">
+                        <h6>美術組 .レクシー</h6>
+                    </div>
+                    <div class="member" style="grid-area: 2/1;">
+                        <img src="images/members/LaoYuan.webp" style="width: 100px;" class="memberIMG">
+                        <h6>美術組 老鳶</h6>
+                    </div>
+                </div>
+
+                <h4>財務組</h4>
+                <div class="memberList">
+                    <div class="member" style="grid-area: 1/1;">
+                        <img src="images/members/unknown.png" style="width: 100px;" class="memberIMG">
+                        <h6>財務組長 王婕芸</h6>
+                    </div>
+                    <div class="member" style="grid-area: 1/2;">
+                        <img src="images/members/unknown.png" style="width: 100px;" class="memberIMG">
+                        <h6>財務組 陳于涵</h6>
+                    </div>
+                </div>
+
+                <h4>行銷組</h4>
+                <div class="memberList">
+                    <div class="member" style="grid-area: 1/1;">
+                        <img src="images/members/JouG.webp" style="width: 100px;">
+                        <h6>行銷組長 久居.</h6>
+                    </div>
+                    <div class="member" style="grid-area: 1/2;">
+                        <img src="images/members/unknown.png" style="width: 100px;" class="memberIMG">
+                        <h6>行銷組 邱芒果</h6>
+                    </div>
+                    <div class="member" style="grid-area: 1/3;">
+                        <img src="images/members/unknown.png" style="width: 100px;" class="memberIMG">
+                        <h6>行銷組 楊</h6>
+                    </div>
+                </div>
+
+                <h4>機動組</h4>
+                <div class="memberList">
+                    <div class="member" style="grid-area: 1/1;">
+                        <img src="images/members/Katrina.webp" style="width: 100px;" class="memberIMG">
+                        <h6>機動組長 高苡瑄</h6>
+                    </div>
+                    <div class="member" style="grid-area: 1/2;">
+                        <img src="images/members/Caspar.webp" style="width: 100px;" class="memberIMG">
+                        <h6>機動組 Caspar1002</h6>
+                    </div>
+                    <div class="member" style="grid-area: 1/3;">
+                        <img src="images/members/Corrine.jpg" style="width: 100px;" class="memberIMG">
+                        <h6>機動組 騎貢丸的人類</h6>
+                    </div>
+                    <div class="member" style="grid-area: 1/4;">
+                        <img src="images/members/unknown.png" style="width: 100px;" class="memberIMG">
+                        <h6>機動組 Richard</h6>
+                    </div>
+                    <div class="member" style="grid-area: 2/1;">
+                        <img src="images/members/yuuuuuu.webp" style="width: 100px;" class="memberIMG">
+                        <h6>機動組 冠妤</h6>
+                    </div>
+                    <div class="member" style="grid-area: 2/2;">
+                        <img src="images/members/unknown.png" style="width: 100px;" class="memberIMG">
+                        <h6>機動組 楊嚖溱</h6>
+                    </div>
+                    <div class="member" style="grid-area: 2/3;">
+                        <img src="images/members/unknown.png" style="width: 100px;" class="memberIMG">
+                        <h6>機動組 狂凱</h6>
+                    </div>
+                    <div class="member" style="grid-area: 2/4;">
+                        <img src="images/members/SixStars.webp" style="width: 100px;" class="memberIMG">
+                        <h6>機動組 六顆星</h6>
+                    </div>
+                </div>
+
+                <h4>攝影組</h4>
+                <div class="memberList">
+                    <div class="member" style="grid-area: 1/1;">
+                        <img src="images/members/Charlie.webp" style="width: 100px;" class="memberIMG">
+                        <h6>攝影組 Charlie Ma</h6>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+
+    </main>
+    <footer-custom></footer-custom>
+</body>
+</html>
