@@ -24,7 +24,6 @@
             display: flex;
             flex-direction: column; /* 垂直排列 */
             align-items: center;    /* 水平置中 */
-            justify-content: center; /* 垂直置中（可選） */
             margin-bottom: 20px;
         }
         .memberList{
@@ -48,6 +47,9 @@
             .unitList {
                 grid-template-columns: 1fr;
                 grid-template-rows: none;
+            }
+            .memberList{
+                grid-template-columns: 2fr 2fr 2fr ;
             }
         }
     </style>
@@ -167,19 +169,19 @@
                 <h2>QRACON籌辦小組</h2>
                 <h4>召組</h4>
                 <div class="memberList">
-                    <div class="member" style="grid-area: 1/1;">
+                    <div class="member">
                         <img src="images/members/Yuchen.jpg" style="width: 100px;" class="memberIMG" alt="Yuchen">
                         <h6>總召 Yuchen</h6>
                     </div>
-                    <div class="member" style="grid-area: 1/2;">
+                    <div class="member">
                         <img src="images/members/qiaoyin.jpg" style="width: 100px;" class="memberIMG" alt="qiaoyin">
                         <h6>副召 qiaoyin</h6>
                     </div>
-                    <div class="member" style="grid-area: 1/3;">
+                    <div class="member">
                         <img src="images/members/ming-chin.jpeg" style="width: 100px;" class="memberIMG" alt="ming-chin">
                         <h6>副召 Ming-Chin, Ho</h6>
                     </div>
-                    <div class="member" style="grid-area: 1/4;">
+                    <div class="member">
                         <img src="images/members/CCLin.webp" style="width: 100px;" class="memberIMG" alt="CCLin">
                         <h6>副召 CCLin</h6>
                     </div>
@@ -187,27 +189,27 @@
 
                 <h4>議程組</h4>
                 <div class="memberList">
-                    <div class="member" style="grid-area: 1/1;">
+                    <div class="member">
                         <img src="images/members/Hi.jpg" style="width: 100px;" class="memberIMG" alt="Hi">
                         <h6>議程組長 Hi</h6>
                     </div>
-                    <div class="member" style="grid-area: 1/2;">
+                    <div class="member">
                         <img src="images/members/XianYu.webp" style="width: 100px;" class="memberIMG" alt="XianYu">
                         <h6>議程組 XianYu</h6>
                     </div>
-                    <div class="member" style="grid-area: 1/3;">
+                    <div class="member">
                         <img src="images/members/red_tea.jpeg" style="width: 100px;" class="memberIMG" alt="江承瀚">
                         <h6>議程組 江承瀚</h6>
                     </div>
-                    <div class="member" style="grid-area: 1/4;">
+                    <div class="member">
                         <img src="images/members/Louispil.jpg" style="width: 100px;" class="memberIMG" alt="Louispil">
                         <h6>議程組 Louispil</h6>
                     </div>
-                    <div class="member" style="grid-area: 2/1;">
+                    <div class="member">
                         <img src="images/members/marcus.webp" style="width: 100px;" class="memberIMG" alt="marcus zeng">
                         <h6>議程組 marcus zeng</h6>
                     </div>
-                    <div class="member" style="grid-area: 2/2;">
+                    <div class="member">
                         <img src="images/members/maodou.webp" style="width: 100px;" class="memberIMG" alt="毛豆加起司">
                         <h6>議程組 毛豆加起司</h6>
                     </div>
@@ -235,23 +237,23 @@
 
                 <h4>美術組</h4>
                 <div class="memberList">
-                    <div class="member" style="grid-area: 1/1;">
+                    <div class="member">
                         <img src="images/members/Sunda4.webp" style="width: 100px;" class="memberIMG" alt="sunda4">
                         <h6>美術組長 sunda4</h6>
                     </div>
-                    <div class="member" style="grid-area: 1/2;">
+                    <div class="member">
                         <img src="images/members/Peggy.webp" style="width: 100px;" class="memberIMG" alt="peggy">
                         <h6>美術組 peggy</h6>
                     </div>
-                    <div class="member" style="grid-area: 1/3;">
+                    <div class="member">
                         <img src="images/members/Doris.webp" style="width: 100px;" class="memberIMG" alt="Doris">
                         <h6>美術組 Doris</h6>
                     </div>
-                    <div class="member" style="grid-area: 1/4;">
+                    <div class="member">
                         <img src="images/members/Rexi.jpg" style="width: 100px;" class="memberIMG" alt=".レクシー">
                         <h6>美術組 .レクシー</h6>
                     </div>
-                    <div class="member" style="grid-area: 2/1;">
+                    <div class="member">
                         <img src="images/members/LaoYuan.webp" style="width: 100px;" class="memberIMG" alt="老鳶">
                         <h6>美術組 老鳶</h6>
                     </div>
@@ -259,11 +261,11 @@
 
                 <h4>財務組</h4>
                 <div class="memberList">
-                    <div class="member" style="grid-area: 1/1;">
+                    <div class="member">
                         <img src="images/members/王婕芸.jpeg" style="width: 100px;" class="memberIMG" alt="王婕芸">
                         <h6>財務組長 王婕芸</h6>
                     </div>
-                    <div class="member" style="grid-area: 1/2;">
+                    <div class="member">
                         <img src="images/members/unknown.png" style="width: 100px;" class="memberIMG" alt="陳于涵">
                         <h6>財務組 陳于涵</h6>
                     </div>
@@ -341,7 +343,7 @@
 
                 <h4>攝影組</h4>
                 <div class="memberList">
-                    <div class="member" style="grid-area: 1/1;">
+                    <div class="member">
                         <img src="images/members/Charlie.webp" style="width: 100px;" class="memberIMG" alt="Charlie Ma">
                         <h6>攝影組 Charlie Ma</h6>
                     </div>
