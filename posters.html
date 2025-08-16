@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh" style="height:100%">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>QRACON 2025</title>
+    <link rel="icon" href="images/icon/icon.png" type="image/png">
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/common.css" rel="stylesheet" />
+    <script src="js/components.js" defer></script>
+</head>
+<style>
+    .posterList{
+        display: grid;
+        /*grid-template-rows: 8rem 8rem 8rem 8rem;*/
+        grid-template-columns: 2fr 2fr 2fr;
+        gap: 0.5rem;
+        max-width: 1000px;
+        margin-top: 20px;
+    }
+    .poster{
+        display: flex;
+        flex-direction: column; /* 垂直排列 */
+        align-items: flex-start;    /* 水平置中 */
+    }
+    @media (max-width: 1000px) {
+        .posterList{
+            grid-template-columns: 2fr 2fr;
+        }
+    }
+    @media (max-width: 768px) {
+        .posterList{
+            grid-template-columns: 2fr;
+        }
+    }
+</style>
+<body>
+    <nav-custom></nav-custom>
+    <main>
+        <div class="title-image-noface">
+            <div class="title">
+                <h1 align="center">海報展</h1>
+            </div>
+        </div>
+        <div class="content" style="max-width: 1000px;">
+            <p>*年會當天解鎖完整圖片</p>
+        </div>
+        <section class="content" style="max-width: 1000px;">
+            <h2>量子科普競賽</h2>
+            <div class="posterList">
+                <div class="poster">
+                    <img src="images/posters/blur/夸克要念夸_量子電腦-1 - 陳柚子9-1.png" style="width: 300px">
+                    <p style="margin-bottom: 5px;align-self: center;" >夸克要念夸</p>
+                    <p style="margin-bottom: 5px;align-self: center;">量子電腦-全新的計算方式</p>
+                </div>
+                <div class="poster">
+                    <img src="images/posters/blur/香蕉隊_量子退火 - Ho Cheng Wei.jpg" style="width: 300px">
+                    <p style="margin-bottom: 5px;align-self: center;">香蕉隊</p>
+                    <p style="margin-bottom: 5px;align-self: center;">量子退火如何重塑優化問題的未來</p>
+                </div>
+            </div>
+        </section>
+        <section class="content" style="max-width: 1000px;">
+            <h2>量子專題競賽—國高中組</h2>
+            <div class="posterList">
+                <div class="poster">
+                    <img src="images/posters/blur/Ocean Themed Classroom Newsletter in Blue Friendly Style.pdf - CC Lin-1.png" style="width: 300px">
+                    <p style="margin-bottom: 5px;align-self: center;">CCLin</p>
+                    <p style="margin-bottom: 5px;align-self: center;">Ocean Themed Classroom Newsletter in Blue Friendly Style</p>
+                </div>
+                <div class="poster">
+                    <img src="images/posters/blur/薛丁哥說得都隊_後量子密碼學（海報） - 116-24-黃馨慧-1.png" style="width: 300px">
+                    <p style="margin-bottom: 5px;align-self: center;">薛丁哥說得都隊</p>
+                    <p style="margin-bottom: 5px;align-self: center;">後密碼量子學PQC 量子電腦的剋星</p>
+                </div>
+            </div>
+        </section>
+        <section class="content" style="max-width: 1000px;">
+            <h2>量子專題競賽—大專組</h2>
+            <div class="posterList">
+                <div class="poster">
+                    <img src="images/posters/blur/QRACON2025_poster - 江承瀚-1.png" style="width: 300px">
+                    <p style="margin-bottom: 5px;align-self: center;">QEC</p>
+                    <p style="margin-bottom: 5px;align-self: center;">Toward Fast and Scalable Decoder Hardware for Tailor-Made Quantum Error Correction Codes</p>
+                </div>
+                <div class="poster">
+                    <img src="images/posters/blur/QPEX Lab_QPE 演算法(海報) - 鐘婉庭-1.png" style="width: 300px">
+                    <p style="margin-bottom: 5px;align-self: center;">QPEX Lab</p>
+                    <p style="margin-bottom: 5px;align-self: center;">QPE 電路優化與MIMO 系統矩陣特徵值分析應用探討：跨越Qiskit 模擬與FPGA - PSK 信號量測實作</p>
+                </div>
+                <div class="poster">
+                    <img src="images/posters/blur/三個傻瓜_基於量子行走圖特徵選擇的比特幣假帳號識別研究海報 - 劉恬妘-1.png" style="width: 300px">
+                    <p style="margin-bottom: 5px;align-self: center;">三個傻瓜</p>
+                    <p style="margin-bottom: 5px;align-self: center;">基於量子行走圖特徵選擇的比特幣假帳號識別</p>
+                </div>
+                <div class="poster">
+                    <img src="images/posters/blur/量鑰行者_量子密鑰交換協議比較海報 - 李承威-1.png" style="width: 300px">
+                    <p style="margin-bottom: 5px;align-self: center;">量鑰行者</p>
+                    <p style="margin-bottom: 5px;align-self: center;">量子密鑰交換協議比較</p>
+                </div>
+                <div class="poster">
+                    <img src="images/posters/blur/蛋化湯_海報 - Ming-Yen Sung-1.png" style="width: 300px">
+                    <p style="margin-bottom: 5px;align-self: center;">蛋化湯</p>
+                    <p style="margin-bottom: 5px;align-self: center;">量子之力，蛋化危機 -開發多頭注意力量子演算法以預測化合物與蛋白質交互作用</p>
+                </div>
+                <div class="poster">
+                    <img src="images/posters/blur/QQ踢_POSTER - 蕭宇承-1.png" style="width: 300px">
+                    <p style="margin-bottom: 5px;align-self: center;">QQ踢</p>
+                    <p style="margin-bottom: 5px;align-self: center;">Enhancing the Performance and Speed of Quantum Support Vector Classifier via Neural Quantum Embedding and Tensor Network</p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
