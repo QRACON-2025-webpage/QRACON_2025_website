@@ -87,7 +87,8 @@ class nav_custom extends HTMLElement {
             <!-- 導覽連結 -->
             <nav id="navbar">
                 <div class="nav-item"><a href="index.html"><h4>首頁</h4></a></div>
-                <div class="nav-item"><a href="agenda.html"><h4>活動內容</h4></a></div>
+                <div class="nav-item"><a href="events.html"><h4>活動內容</h4></a></div>
+                <div class="nav-item"><a href="agenda.html"><h4>議程表</h4></a></div>
                 <div class="nav-item"><a href="posters.html"><h4>海報展</h4></a></div>
                 <div class="nav-item"><a href="map.html"><h4>交通方式</h4></a></div>
                 <div class="nav-item"><a href="https://sqcs.kktix.cc/events/qracon2025"><h4>購票資訊</h4></a></div>
