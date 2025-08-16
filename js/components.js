@@ -129,7 +129,7 @@ class footer_custom extends HTMLElement {
             <h3>QRACON學生量子電腦年會</h3>
         </div>
         <div>
-            <h5>Website made by RPTeS</h5>
+            <a href='https://rfeqserver.myqnapcloud.com' style='color: white;'><h5>Website made by RPTeS</h5></a>
         </div>
       `;
     }
