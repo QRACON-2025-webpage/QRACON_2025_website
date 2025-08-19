@@ -29,7 +29,10 @@
 
             text-align: center; /* 每個標籤內文字水平置中 */
         }
-
+        .empty-cell {
+            border: 1px solid #ccc;
+            background: linear-gradient(135deg, transparent 49%, rgba(0,0,0,0.3) 50%, transparent 51%);
+        }
 
         .event{
             border: 1px solid rgb(160, 160, 160);
@@ -70,8 +73,8 @@
         <div class="content" style="max-width: 1500px;">
             <h2>活動議程表</h2>
             <div class="phone">
-                <div>
-                    <img src="images/map2.png" style="width: 100%;" />
+                <div style="margin-right: 0.2rem;">
+                    <img src="images/map2pc.png" style="width: 100%;" />
                     <div class="schedule_table">
                         <div class="cell" style="grid-area: 1/1;">
                             
@@ -94,17 +97,31 @@
                         <div class="cell not-event" style="grid-area: 2/2;">
                             <h6>報到</h6>
                         </div>
+                        <div class="cell event" style="grid-area: 2/3;">
+                            
+                        </div>
+                        <div class="cell event" style="grid-area: 2/4;">
+                            
+                        </div>
+                        <div class="cell event" style="grid-area: 2/5;">
+                            
+                        </div>
                         <div class="cell" style="grid-area: 3/1;">
                             <h6>9:30-10:00</h6>
                         </div>
-                        <div class="cell not-event" style="grid-area: 3/2/10;">
+                        <div class="cell not-event" style="grid-area: 3/2/11;">
                             <h6>服務台</h6>
                             <h6>紀念品販售區</h6>
                         </div>
                         <div class="cell not-event" style="grid-area: 3/3;">
                             <h6>開幕典禮</h6>
                         </div>
-                        
+                        <div class="cell event" style="grid-area: 3/4;">
+                            
+                        </div>
+                        <div class="cell event" style="grid-area: 3/5;">
+                            
+                        </div>
                         <div class="cell" style="grid-area: 4/1;">
                             <h6>10:10-11:00</h6>
                         </div>
@@ -116,6 +133,9 @@
                             <h6>加拿大 BTQ</h6>
                             <h6>量子通訊解密</h6>
                         </div>
+                        <div class="cell event" style="grid-area: 4/5;">
+                            
+                        </div>
                         <div class="cell" style="grid-area: 5/1;">
                             <h6>11:10-12:00</h6>
                         </div>
@@ -126,6 +146,9 @@
                         <div class="cell event" style="grid-area: 5/4;">
                             <h6>日本QUEMIX</h6>
                             <h6>容錯量子演算法開發</h6>
+                        </div>
+                        <div class="cell event" style="grid-area: 5/5;">
+                            
                         </div>
                         <div class="cell" style="grid-area: 6/1;">
                             <h6>12:00-13:30</h6>
@@ -155,12 +178,21 @@
                             <h6>郭恩瑞教授</h6>
                             <h6>量子抽樣的潛力</h6>
                         </div>
+                        <div class="cell event" style="grid-area: 8/4;">
+                            
+                        </div>
                         <div class="cell" style="grid-area: 9/1;">
                             <h6>15:45-16:35</h6>
                         </div>
                         <div class="cell event" style="grid-area: 9/3;">
                             <h6>德國QUDORA</h6>
                             <h6>第三代離子阱</h6>
+                        </div>
+                        <div class="cell event" style="grid-area: 9/4;">
+                            
+                        </div>
+                        <div class="cell event" style="grid-area: 9/5;">
+                            
                         </div>
                         <div class="cell" style="grid-area: 10/1;">
                             <h6>16:40-17:00</h6>
@@ -269,17 +301,31 @@
                         <div class="cell not-event" style="grid-area: 2/2;">
                             <h6>報到</h6>
                         </div>
+                        <div class="cell event" style="grid-area: 2/3;">
+                            
+                        </div>
+                        <div class="cell event" style="grid-area: 2/4;">
+                            
+                        </div>
+                        <div class="cell event" style="grid-area: 2/5;">
+                            
+                        </div>
                         <div class="cell" style="grid-area: 3/1;">
                             <h6>9:30-10:00</h6>
                         </div>
-                        <div class="cell not-event" style="grid-area: 3/2/10;">
+                        <div class="cell not-event" style="grid-area: 3/2/11;">
                             <h6>服務台</h6>
                             <h6>紀念品販售區</h6>
                         </div>
                         <div class="cell not-event" style="grid-area: 3/3;">
                             <h6>開幕典禮</h6>
                         </div>
-                        
+                        <div class="cell event" style="grid-area: 3/4;">
+                            
+                        </div>
+                        <div class="cell event" style="grid-area: 3/5;">
+                            
+                        </div>
                         <div class="cell" style="grid-area: 4/1;">
                             <h6>10:10-11:00</h6>
                         </div>
@@ -291,6 +337,9 @@
                             <h6>加拿大 BTQ</h6>
                             <h6>量子通訊解密</h6>
                         </div>
+                        <div class="cell event" style="grid-area: 4/5;">
+                            
+                        </div>
                         <div class="cell" style="grid-area: 5/1;">
                             <h6>11:10-12:00</h6>
                         </div>
@@ -301,6 +350,9 @@
                         <div class="cell event" style="grid-area: 5/4;">
                             <h6>日本QUEMIX</h6>
                             <h6>容錯量子演算法開發</h6>
+                        </div>
+                        <div class="cell event" style="grid-area: 5/5;">
+                            
                         </div>
                         <div class="cell" style="grid-area: 6/1;">
                             <h6>12:00-13:30</h6>
@@ -330,12 +382,21 @@
                             <h6>郭恩瑞教授</h6>
                             <h6>量子抽樣的潛力</h6>
                         </div>
+                        <div class="cell event" style="grid-area: 8/4;">
+                            
+                        </div>
                         <div class="cell" style="grid-area: 9/1;">
                             <h6>15:45-16:35</h6>
                         </div>
                         <div class="cell event" style="grid-area: 9/3;">
                             <h6>德國QUDORA</h6>
                             <h6>第三代離子阱</h6>
+                        </div>
+                        <div class="cell event" style="grid-area: 9/4;">
+                            
+                        </div>
+                        <div class="cell event" style="grid-area: 9/5;">
+                            
                         </div>
                         <div class="cell" style="grid-area: 10/1;">
                             <h6>16:40-17:00</h6>
