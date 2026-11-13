@@ -21,6 +21,17 @@
     <script src="js/components.js" defer></script>
     <script src="js/jquery.js" defer></script>
 	<script>if (typeof module === 'object') {window.jQuery = window.$ = module.exports;};</script>
+    <style>
+        #stage {
+            position: fixed;    
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;        
+            /* pointer-events: none;  ← 這行刪掉 */
+        }
+    </style>
 </head>
 <body>
     <nav-custom></nav-custom>
@@ -68,5 +79,276 @@
 
     </main>
     <footer-custom></footer-custom>
+    <canvas id="stage"></canvas>
+
+  <script>
+    (() => {
+      'use strict';
+
+      const canvas = document.getElementById('stage');
+      const ctx = canvas.getContext('2d');
+
+      // ================== 可調參數 ==================
+      const DOT_RADIUS = 1.8;               // 粒子半徑（白點）
+      const SPRING_K = 60;                  // 回到原位的彈簧強度（大=回得快）
+      const FRICTION = 0.985;               // 速度衰減（0.97~0.995）
+      const JITTER = 7;                     // 微擾動（讓運動更自然）
+      const MAX_SPEED = 520;                // 速度上限（px/s）
+
+      const MOUSE_RADIUS = 360;             // 滑鼠吸引半徑（px）
+
+      // ⭐ 速度驅動的吸引力（滑鼠移越快 → 吸力越大）
+      const MOUSE_STRENGTH_BASE = 700;      // 最小吸引強度（滑鼠靜止時）
+      const MOUSE_STRENGTH_MAX  = 14000;     // 最大吸引強度（速度達到 SPEED_FOR_MAX 時）
+      const SPEED_FOR_MAX       = 1400;     // 達到最大吸力所需的滑鼠速度（px/s）
+      const SPEED_SMOOTH_ALPHA  = 0.35;     // 速度指標的指數平滑參數（0~1）
+      const SPEED_DECAY_PER_FRAME = 0.96;   // 無移動時逐幀衰減
+
+      const TETHER_MAX = 1;              // 與網格間距相比，允許偏離的最大比例（不會離開原位太遠）
+      const CLICK_RADIUS = 200;             // 點擊衝擊半徑（px）
+      const CLICK_IMPULSE = 24000;            // 點擊瞬時速度增量
+      const CLICK_DAMPING = 0.75;           // 點擊時若超出繩長的阻尼
+
+      // ================== DPR & 尺寸 ==================
+      let dpr = Math.max(1, window.devicePixelRatio || 1);
+      function fitCanvas() {
+        const w = document.documentElement.clientWidth;
+        const h = document.documentElement.clientHeight;
+        dpr = Math.max(1, window.devicePixelRatio || 1);
+        canvas.width  = Math.floor(w * dpr);
+        canvas.height = Math.floor(h * dpr);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        canvas.style.width = w + 'px';
+        canvas.style.height = h + 'px';
+      }
+
+      // ================== 網格生成（更密集） ==================
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      function computeGrid(w, h) {
+        const area = w * h;
+        // 比前一版更密：除數改為 ~5000（reduced-motion 也提高），並放寬上限
+        const baseDiv = prefersReduced ? 11000 : 2000;
+        const desired = Math.max(220, Math.min(1000000, Math.round(area / baseDiv)));
+        const spacing = Math.max(6, Math.sqrt(area / desired)); // 允許更緊密的間距
+        let cols = Math.max(3, Math.floor(w / spacing));
+        let rows = Math.max(3, Math.floor(h / spacing));
+        const gapX = w / (cols + 1);
+        const gapY = h / (rows + 1);
+        const tether = Math.min(gapX, gapY) * TETHER_MAX; // 繩長（像素）
+        return { cols, rows, gapX, gapY, tether };
+      }
+
+      class Particle {
+        constructor(hx, hy, tetherLen) {
+          // home（原位）
+          this.hx = hx; this.hy = hy;
+          // 起始在網格點（整齊）
+          this.x = hx; this.y = hy;
+          // 輕微隨機初速
+          const a = Math.random() * Math.PI * 2;
+          const s = 18 * Math.random();
+          this.vx = Math.cos(a) * s;
+          this.vy = Math.sin(a) * s;
+          this.tether = tetherLen; // 最大偏離距離（不離開）
+        }
+
+        step(dt, mouse) {
+          // ---- 回位彈簧力（Hooke）----
+          const dxh = this.hx - this.x;
+          const dyh = this.hy - this.y;
+          this.vx += dxh * SPRING_K * dt;
+          this.vy += dyh * SPRING_K * dt;
+
+          // ---- 滑鼠吸引（半徑內，且強度取決於滑鼠速度）----
+          if (mouse.active) {
+            const dx = mouse.x - this.x;
+            const dy = mouse.y - this.y;
+            const dist = Math.hypot(dx, dy);
+            if (dist > 1e-6 && dist < mouse.radius) {
+              const w = 1 - dist / mouse.radius;            // 邊緣→0，中心→1
+              const vNorm = Math.min(1, mouse.speed / SPEED_FOR_MAX);
+              const easeOut = 1 - Math.pow(1 - vNorm, 3);   // easeOutCubic
+              const strength = MOUSE_STRENGTH_BASE +
+                               (MOUSE_STRENGTH_MAX - MOUSE_STRENGTH_BASE) * easeOut;
+              const pull = strength * w * w;
+              this.vx += (dx / dist) * pull * dt;
+              this.vy += (dy / dist) * pull * dt;
+            }
+          }
+
+          // ---- 微擾動 + 速度限制 + 摩擦 ----
+          this.vx += (Math.random() - 0.5) * JITTER * dt;
+          this.vy += (Math.random() - 0.5) * JITTER * dt;
+
+          let sp = Math.hypot(this.vx, this.vy);
+          if (sp > MAX_SPEED) {
+            const s = MAX_SPEED / sp;
+            this.vx *= s; this.vy *= s;
+          }
+
+          this.vx *= FRICTION;
+          this.vy *= FRICTION;
+
+          // 積分
+          this.x += this.vx * dt;
+          this.y += this.vy * dt;
+
+          // ---- 繩長約束：不會離開原位太遠 ----
+          const ox = this.x - this.hx;
+          const oy = this.y - this.hy;
+          const d = Math.hypot(ox, oy);
+          if (d > this.tether) {
+            const nx = ox / d, ny = oy / d;
+            this.x = this.hx + nx * this.tether;
+            this.y = this.hy + ny * this.tether;
+            const vn = this.vx * nx + this.vy * ny; // 外向分量
+            if (vn > 0) { this.vx -= vn * nx; this.vy -= vn * ny; }
+            this.vx *= 0.85; this.vy *= 0.85;
+          }
+        }
+
+        draw(ctx) {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, DOT_RADIUS, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      let particles = [];
+      let grid = null;
+
+      function buildGrid() {
+        const w = document.documentElement.clientWidth;
+        const h = document.documentElement.clientHeight;
+        grid = computeGrid(w, h);
+        const { cols, rows, gapX, gapY, tether } = grid;
+
+        particles = [];
+        for (let j = 0; j < rows; j++) {
+          for (let i = 0; i < cols; i++) {
+            const hx = (i + 1) * gapX;
+            const hy = (j + 1) * gapY;
+            particles.push(new Particle(hx, hy, tether));
+          }
+        }
+      }
+
+      // ================== 滑鼠 / 觸控（含速度量測） ==================
+      const mouse = {
+        x: 0, y: 0,
+        active: false,
+        radius: MOUSE_RADIUS,
+        speed: 0,           // 當前平滑後的速度（px/s）
+        _px: 0, _py: 0,     // 上一次位置
+        _pt: 0              // 上一次時間戳（ms）
+      };
+
+      function updateMouseCore(e) {
+        const r = canvas.getBoundingClientRect();
+        const x = e.clientX - r.left;
+        const y = e.clientY - r.top;
+
+        // 計算滑鼠速度（px/s） + 指數平滑
+        const t = e.timeStamp || performance.now();
+        if (mouse._pt > 0) {
+          const dt = Math.max(0.001, (t - mouse._pt) / 1000);
+          const dx = x - mouse._px;
+          const dy = y - mouse._py;
+          const instV = Math.hypot(dx, dy) / dt; // 即時速度
+          mouse.speed += (instV - mouse.speed) * SPEED_SMOOTH_ALPHA;
+        }
+        mouse._px = x; mouse._py = y; mouse._pt = t;
+
+        mouse.x = x; mouse.y = y;
+      }
+
+      window.addEventListener('pointermove', (e) => { updateMouseCore(e); mouse.active = true; }, { passive: true });
+      window.addEventListener('pointerenter', (e) => { updateMouseCore(e); mouse.active = true; }, { passive: true });
+      window.addEventListener('pointerleave', () => { mouse.active = false; mouse.speed = 0; }, { passive: true });
+
+      // 點擊衝擊：仍受繩長限制，不會離開
+      function blast(sx, sy) {
+        const r2 = CLICK_RADIUS * CLICK_RADIUS;
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+          const dx = p.x - sx, dy = p.y - sy;
+          const d2 = dx*dx + dy*dy;
+          if (d2 < r2) {
+            const d = Math.sqrt(d2) || 1e-6;
+            const w = 1 - d / CLICK_RADIUS;
+            const impulse = CLICK_IMPULSE * w;
+            p.vx += (dx / d) * impulse;
+            p.vy += (dy / d) * impulse;
+
+            // 超界預抑制，確保不離開
+            const ox = p.x + p.vx * 0.016 - p.hx;
+            const oy = p.y + p.vy * 0.016 - p.hy;
+            const dd = Math.hypot(ox, oy);
+            if (dd > p.tether) {
+              const nx = ox / dd, ny = oy / dd;
+              p.vx *= CLICK_DAMPING;
+              p.vy *= CLICK_DAMPING;
+              const vn = p.vx * nx + p.vy * ny;
+              if (vn > 0) { p.vx -= vn * nx; p.vy -= vn * ny; }
+            }
+          }
+        }
+      }
+      window.addEventListener('pointerdown', (e) => { 
+        const r = canvas.getBoundingClientRect();
+        blast(e.clientX - r.left, e.clientY - r.top);
+      });
+
+      // （可選）空白鍵：在隨機處引爆，方便測試
+      window.addEventListener('keydown', (e) => {
+        if (e.code === 'Space') {
+          const w = document.documentElement.clientWidth;
+          const h = document.documentElement.clientHeight;
+          blast(Math.random() * w, Math.random() * h);
+        }
+      });
+
+      // ================== 主循環 ==================
+      let lastT = performance.now();
+      function frame(now) {
+        const dt = Math.min(0.033, Math.max(0.001, (now - lastT) / 1000));
+        lastT = now;
+
+        // 長時間沒移動時讓速度逐幀衰減
+        if (!mouse.active || (now - mouse._pt) > 50) {
+          mouse.speed *= SPEED_DECAY_PER_FRAME;
+          if (mouse.speed < 1) mouse.speed = 0;
+        }
+
+        // 更新
+        for (let i = 0; i < particles.length; i++) particles[i].step(dt, mouse);
+
+        // 繪製
+        ctx.clearRect(0, 0, canvas.width / dpr, canvas.height / dpr);
+        ctx.fillStyle = 'rgba(0,0,0,0.4)';
+        for (let i = 0; i < particles.length; i++) particles[i].draw(ctx);
+
+        requestAnimationFrame(frame);
+      }
+
+      // ================== 初始化 & 監聽 ==================
+      function relayout() {
+        fitCanvas();
+        buildGrid();
+      }
+
+      fitCanvas();
+      buildGrid();
+
+      let resizeTimer = 0;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(relayout, 120);
+      });
+
+      requestAnimationFrame((t) => { lastT = t; frame(t); });
+    })();
+  </script>
+
 </body>
 </html>
